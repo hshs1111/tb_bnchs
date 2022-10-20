@@ -33,7 +33,7 @@ def sell_coin_tp(self, symbol, t_price):
 
 
 while True:
-  time.sleep(30)
+  time.sleep(3600)
   buy_coin_tp(client, 'BTCUSDT', 19200)
   sell_coin_tp(client, 'BTCUSDT', 20000)
     
