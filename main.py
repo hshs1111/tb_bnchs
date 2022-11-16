@@ -61,8 +61,8 @@ def trade_based_on_5_sma(client):
   df['5_sma'] = df['close'].rolling(5).mean()
   df['15_sma'] = df['close'].rolling(15).mean()
   
-  #df['buy'] = np.where(df['5_sma'] > df['close'], 1, 0)
-  #df['sell'] = np.where(df['5_sma'] <= df['close'], 1, 0)
+  # df['buy'] = np.where(df['5_sma'] > df['close'], 1, 0)
+  # df['sell'] = np.where(df['5_sma'] <= df['close'], 1, 0)
   return df
   
 #print(get_price_history(client))
