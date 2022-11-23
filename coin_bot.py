@@ -1,11 +1,11 @@
 from binance.client import Client
 
 class CoinBot:
-  API_KEY = 'bssW4Xpf2nTPtEDVWHkrDkmO5JBXqYlrKMmUOTlCvwCUQdMLzWuhTkblTGEv8xJ9'
-  API_SECRET = 'hcGXWdDnIMYBLy6FoPzKO58GdBzalFY1lpmK2hizfBihWX2xdbBPYUD6qdk4Vm4K'
+  API_KEY = 'ㅇ'
+  API_SECRET = 'ㅇ'
   
   def __init__(self):
-    self.client = Client(self.API_KEY, self.API_SECRET, testnet=True)
+    self.client = Client(self.API_KEY, self.API_SECRET, testnet=False)
 
     
   def buy_coin_dc(self, symbol, quantity):
@@ -49,6 +49,6 @@ class CoinBot:
 # print(client.get_account())
 bot = CoinBot()
 account_info = bot.client.get_account()
-print(account_info)
+# print(account_info)
 # order_result = bot.buy_coin_amp('LTCUSDT',50)
 # print(order_result)

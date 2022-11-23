@@ -8,41 +8,8 @@ bot = CoinBot()
 client = bot.client
 #코인 가격을 감시하고 거래실행
 
-def buy_coin_tp(self, symbol, t_price):
-  ticker_info = self.client.get_ticker(symbol=symbol)
-  last_price = ticker_info['lastPrice'] 
-  last_price = round(float(last_price), 2)
-  if last_price <= t_price:
-    return client.order_market_buy(
-      symbol=symbol,
-      quantity=1.0,
-      price=str(t_price)
-    )
-  return None
-
-
-def sell_coin_tp(self, symbol, t_price):
-  ticker_info = self.client.get_ticker(symbol=symbol)
-  last_price = ticker_info['lastPrice'] 
-  last_price = round(float(last_price), 2)
-  if last_price <= t_price:
-    return client.order_market_buy(
-      symbol=symbol,
-      quantity=1.0,
-      price=str(t_price)
-    )
-  return None
-
-
-#while True:
-  #time.sleep(3600)
-  #buy_coin_tp(client, 'BTCUSDT', 19200)
-  #sell_coin_tp(client, 'BTCUSDT', 20000)
-    
-# 1. 이동평균선보다 낮으면사고 높으면 팔기
-
 def get_price_history(client):
-  klines = client.get_historical_klines('BNBUSDT', '1h', '9 day ago UTC', limit=1000)
+  klines = client.get_historical_klines('BNBBUSD', '1h', '9 day ago UTC', limit=1000)
   for line in klines:
     del line[5:]
 
@@ -55,6 +22,33 @@ def get_price_history(client):
   return df.astype(float)
 
 
+# # def buy_coin_tp(client):
+#   df = trade_based_on_crossover(client)                        
+#   if buy_cross:
+#     return client.order_market_buy(
+#       symbol=symbol,
+#       quantity=1.0,
+#       price=str(buy_cross)
+#     )
+#   return None
+# result = buy_coin_tp(client)
+# print(result)
+
+# def sell_coin_tp(self, symbol):
+#   if sell_cross:
+#     return client.order_market_sell(
+#       symbol=symbol,
+#       quantity=1.0,
+#       price=str(sell_cross)
+#     )
+#   return None
+
+
+    
+# 1. 이동평균선보다 낮으면사고 높으면 팔기
+
+
+
 def trade_based_on_5_sma(client):
   df = get_price_history(client)
                         
@@ -65,7 +59,7 @@ def trade_based_on_5_sma(client):
   # df['sell'] = np.where(df['5_sma'] <= df['close'], 1, 0)
   return df
   
-#print(get_price_history(client))
+print(get_price_history(client))
 
 
 def trade_based_on_crossover(client):
@@ -91,5 +85,5 @@ def plot_crossover_graph(client):
   
   plt.xlabel('Data')
   plt.ylabel('Pirce')
-  plt.show()
+  # plt.show()
 # plot_crossover_graph(client)
